@@ -1,9 +1,10 @@
+var saveButtonEl = $(".saveBtn");
 // Display today's time
 var todaysTime = moment().format("dddd, MMMM, Do");
 var todaysDisplay = document.getElementById("currentDay");
-var saveButtonEl = $(".saveButton");
 
 todaysDisplay.textContent = todaysTime;
+
 
 
 function timeSlots() {
@@ -21,19 +22,27 @@ function timeSlots() {
     })
 };
 
-// save text area when triggerd on click event
-saveButtonEl.on('click', funciton() {
+// save text area when triggerd on click event using localStorage
+saveButtonEl.on('click', function() {
     var hoursEl = $(this).siblings(".hour").text();
     var taskEl = $(this).siblings(".task").val();
 
     localStorage.setItem(hoursEl, taskEl);
 });
 
+// save items via local storage 
+function savedTasks() {
+    // target each of the hours on the time-blocks
+    $(".hour").each(function() {
+        var hoursEl = $(this).text();
+        var getEl = localStorage.getItem(hoursEl);
 
-// save items
-function savedItems() {
-    $('')
+        if (getEl !== null) {
+            $(this).siblings(".task").val(getEl);
+        }
+    });
 }
 
-
+// call functions
 timeSlots();
+savedTasks();
