@@ -1,1 +1,14 @@
-# Work Day Scheduler Starter Code
+# Work Day Scheduler
+
+## Description
+
+## Built With
+
+## Links
+
+## License
+
+## Credits
+
+## Visual
+
